@@ -1,38 +1,181 @@
-.App {
-  text-align: center;
+@import '~antd/dist/antd.css';
+
+.header {
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+@media only screen and (min-width: 992px) {
+  .nav-about {
+    position: absolute;
+    left: 550px;
+    top: 30px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+    color: #000000;
+  }
+  
+  .nav-hospital {
+    position: absolute;
+    left: 700px;
+    top: 30px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+    color: #000000;
+  }
+  
+  .btn-quote {
+    position: absolute;
+    left: 900px;
+    top: 30px;
+  }
+  
+  .main-heading {
+    position: absolute;
+    width: 363px;
+    height: 144px;
+    left: 550px;
+    top: 212px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 72px;
+    color: #000000;
+  }
+  
+  .main-paragraph {
+    position: absolute;
+    width: 301px;
+    height: 54px;
+    left: 550px;
+    top: 370px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 27px;
+    color: #6A6969;
+  }
+  
+  .hospital-image {
+    position: absolute;
+    width: 500px;
+    height: 740px;
+    left: 0px;
+    top: 0px;
+  }
+  
+  .select {
+    position: absolute;
+    height: 146.25px;
+    left: 550px;
+    top: 440px;
+  }
+  
+  .search-select {
+    position: absolute;
+    height: 146.25px;
+    left: 680px;
+    top: 490px;
+  }
+  
+  .geo-text {
+    padding-top: 15px;
+  }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  .spinner {
+    position: absolute;
+    height: 146.25px;
+    left: 600px;
+    top: 600px;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media only screen and (max-width: 600px) {
+  .nav-about {
+    position: absolute;
+    width: 30px;
+    height: 15px;
+    left: 170px;
+    top: 15px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 15px;
+    color: #000000;
   }
-  to {
-    transform: rotate(360deg);
+  .nav-hospital {
+    position: absolute;
+    width: 69px;
+    height: 15px;
+    left: 230px;
+    top: 15px;  
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 15px; 
+    color: #000000;
+  }
+  .btn-quote { 
+    visibility: hidden;
+
+  }
+  .hospital-image {
+    position: absolute;
+    width: 150px;
+    height: 304px;
+    left: -3px;
+    top: 0px;
+  }
+  .main-heading {
+    position: absolute;
+    width: 137px;
+    height: 54px;
+    left: 170px;
+    top: 61px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 27px;
+    color: #000000;
+  }
+  .main-paragraph {
+    position: absolute;
+    width: 128px;
+    height: 45px;
+    left: 170px;
+    top: 115px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 15px;
+    color: #6A6969;
+  }
+  .select {
+    position: absolute;
+    left: 170px;
+    top: 170px;
+  }
+  .geo-text {
+    padding-top: 10px;
+  }
+  .search-select {
+    position: absolute;
+    width: 30px !important;
+    height: 146.25px;
+    left: 30px;
+    top: 320px;
   }
 }

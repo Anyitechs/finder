@@ -1,76 +1,60 @@
-import React, { useState } from 'react';
-import { Select, Input } from 'antd';
+import React, { useState } from "react";
+import { Select, Input, Popover } from 'antd';
+import { Card } from 'antd';
+import usePlacesAutocomplete, {
+  getGeocode,
+  getLatLng,
+} from "use-places-autocomplete";
 
-import { Spinner } from "./Spinner";
-import { stat } from 'fs';
+function Search() {
 
-
-const { Option } = Select;
-const { Search } = Input;
-
-
-
-export const SearchInput: React.FC = () => {
-    // const [value, valueSearch] = useState('');
-
-const [state, setState ]= useState({
+  const [state, setState ]= useState({
     city: "",
     range: 2
 })
-
-    // const [city, setCity] = useState("");
-    const [showSpinner, setSpinner] = useState(false);
-// handle range
-
-
-
-    // handle input
-    const handleChange = (e: any) => {
-    // get input value
-        const { name, value } = e.target;
-// set city to input value
+  const handleChange = (e: any) => {
+    const { name, value } = e.target;
    setState({...state, [name]: value});
+  }
+  const {ready, value, suggestions: {status, data},
+   setValue, 
+   clearSuggestions,
+  } = usePlacesAutocomplete({
+    requestOptions: {
+      location: { lat: () => 9.081999,
+         lng: () => 8.675277, 
+         equals: () => true, 
+         toUrlValue: () => "", toJSON: () => ({lat: 9.081999, lng: 8.675277})},
+      radius: state.range * 1000
+    },
+  });
 
-   console.log("value ", state.city)
-    }
-    
-
-    // handle submit
-    const handleSubmit = (e: any) => {
-    e.preventDefault();
-e.stopPropagation();
-
-setSpinner(true);
-console.log("submitting form");
-
-
-    }
-    
-
-    return (
-        <>
+  return (
+    <>
         <div className="select">
-            <p className="geo-text">Geolocation radius</p>
-            {/* <Select defaultValue="lucy" style={{ width: 120 }}>
-                <Option value="jack">Jack</Option>
-                <Option value="lucy">Lucy</Option>
-                <Option value="disabled" disabled>
-                    Disabled
-                </Option>
-                <Option value="Yiminghe">yiminghe</Option>
-            </Select> */}
-            <p> 1 - {state.range}km </p> 
-            <input type="range" min="1" max="20" onChange={handleChange} value={state.range} name="range" />
-        </div>
-        <form className="search-select" onSubmit={handleSubmit} > 
-
-            <Search style={{ width: 400 }} placeholder="input search text" name="city" onChange={handleChange} value={state.city} enterButton />
-        </form>
-
-        {
-            showSpinner && <Spinner />
-        }
-
-        </>
-    )
+        <p className="geo-text">Geolocation radius</p>
+        <p> 1 - {state.range}km </p> 
+        <input type="range" min="1" max="20" onChange={handleChange} value={state.range} name="range" />
+      </div>
+    <div>
+    <Input.Search style={{ width: 400 }} placeholder="input search text" value={value} onChange={(e) => {
+      setValue(e.target.value)
+    }}
+      disabled={!ready} />
+    <div>
+      {status === "OK" && data.map(({id, description}) =>
+      <div key={id}>
+        <Card title="Hospitals">
+          <Card type="inner" title={id}>
+            {description}
+          </Card>
+        </Card>
+      </div>
+      )}
+    </div>
+    </div>
+    </>
+  )
 }
+
+export default Search;

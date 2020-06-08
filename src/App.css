@@ -74,9 +74,9 @@
   
   .select {
     position: absolute;
-    height: 146.25px;
-    left: 550px;
-    top: 440px;
+    /* height: 146.25px; */
+    left: -150px;
+    top: -20px;
   }
   
   .search-select {
@@ -84,6 +84,13 @@
     height: 146.25px;
     left: 680px;
     top: 490px;
+  }
+
+  .map {
+    position: absolute;
+    height: 146.25px;
+    left: 680px;
+    top: 500px;
   }
   
   .geo-text {

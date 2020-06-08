@@ -1,41 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   GoogleMap,
   useLoadScript,
   Marker,
   InfoWindow,
 } from "@react-google-maps/api";
+import Search from './SearchInput';
 
 const libraries = ["places"];
 const mapContainerStyle = {
-    width: "100vw",
-    height: "100vh"
+    width: "400px",
+    height: "300px"
 }
 const center = {
     lat: 9.081999,
     lng: 8.675277
 }
 
+
 function SearchMap () {
     const { isLoaded, loadError } = useLoadScript({
-      googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+      googleMapsApiKey: "AIzaSyAcd9RiyjIy6i3SsyG0u0_3Emmd5ZvLBD8",
       libraries,
     });
+
+    const [markers, setMarkers] = useState([]);
 
     if (loadError) return <p>"Error loading maps"</p>
     if (!isLoaded) return <p>"Loading Maps"</p>
 
     return( 
     <React.Fragment>
-    <div>
+    <div className="map">
+
+        <Search />
+
         <GoogleMap
             mapContainerStyle={mapContainerStyle}
             zoom={8}
             center={center}
-            ></GoogleMap>
+            >
+            </GoogleMap>
     </div>
     </React.Fragment>
     )
 }
+
 
 export default SearchMap;

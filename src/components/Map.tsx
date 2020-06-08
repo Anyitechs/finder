@@ -20,7 +20,7 @@ const center = {
 
 function SearchMap () {
     const { isLoaded, loadError } = useLoadScript({
-      googleMapsApiKey: "AIzaSyAcd9RiyjIy6i3SsyG0u0_3Emmd5ZvLBD8",
+      googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
       libraries,
     });
 
